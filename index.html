@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F5F1E8">
+  <link rel="icon" type="image/png" href="assets/images/opallios-favicon.png">
+  <meta name="description" content="Opallios S.A.S. — bisutería artesanal personalizada. No son solo accesorios, son historias que llevas contigo.">
+  <title>Opallios S.A.S. | Tu estilo, tu historia, tu Opallios</title>
+
+  <!-- Tipografías: Google Fonts es la única dependencia externa del proyecto. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       1. VARIABLES, REINICIO Y ESTILOS GENERALES
+       ========================================================= */
+    :root {
+      --opalo-blanco: #F5F1E8;
+      --opalo-perla: #E8E3D9;
+      --opalo-rosa: #E8B4C8;
+      --opalo-verde: #A8D5BA;
+      --opalo-azul: #9BC4E2;
+      --opalo-lila: #C8B6E2;
+      --opalo-dorado: #E8C9A0;
+      --opalo-profundo: #2C2A3E;
+      --opalo-gris: #6B6878;
+      --blanco: #FFFFFF;
+      --sombra: 0 18px 50px rgba(44, 42, 62, 0.09);
+      --sombra-hover: 0 24px 60px rgba(73, 64, 100, 0.16);
+      --radio: 22px;
+      --transicion: 350ms cubic-bezier(0.22, 1, 0.36, 1);
+      --gradiente-opalo: linear-gradient(115deg, var(--opalo-lila), var(--opalo-azul), var(--opalo-verde), var(--opalo-rosa), var(--opalo-dorado));
+      --ancho-contenido: 1160px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--opalo-blanco);
+      color: var(--opalo-profundo);
+      font-family: "Poppins", sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    body.menu-abierto { overflow: hidden; }
+    img, svg { max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible {
+      outline: 3px solid #6C83B7;
+      outline-offset: 4px;
+    }
+    ::selection { background: var(--opalo-lila); color: var(--opalo-profundo); }
+    .contenedor { width: min(calc(100% - 40px), var(--ancho-contenido)); margin-inline: auto; }
+    .seccion { padding: 88px 0; position: relative; }
+    .seccion-suave { background: rgba(232, 227, 217, 0.48); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin: 0 0 13px; color: #665B83; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.19em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: var(--opalo-dorado); }
+    .titulo-seccion {
+      margin: 0; font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.45rem, 6vw, 4.1rem); font-weight: 600;
+      line-height: 1.02; letter-spacing: -0.025em;
+    }
+    .titulo-iridiscente {
+      background: linear-gradient(100deg, #68547F 8%, #5487A8 36%, #5F9B7D 62%, #B46F91 85%);
+      background-size: 220% auto; color: #68547F;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: brillo-titulo 8s linear infinite;
+    }
+    .intro-seccion { max-width: 660px; margin: 17px auto 0; color: var(--opalo-gris); }
+    .encabezado-seccion { max-width: 760px; margin: 0 auto 46px; text-align: center; }
+    .texto-suave { color: var(--opalo-gris); }
+    .microtexto { font-size: 0.78rem; color: var(--opalo-gris); }
+
+    /* =========================================================
+       2. BOTONES Y EFECTOS COMPARTIDOS
+       ========================================================= */
+    .boton {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 50px; padding: 12px 23px; border: 0; border-radius: 999px;
+      cursor: pointer; font-size: 0.84rem; font-weight: 600;
+      transition: transform var(--transicion), box-shadow var(--transicion), background var(--transicion);
+    }
+    .boton:hover { transform: translateY(-3px); }
+    .boton-principal {
+      color: #27243A; background: linear-gradient(110deg, #D7C5EB, #B9D8EA, #BDE4CE, #EFC9D8);
+      background-size: 220% 220%; box-shadow: 0 10px 25px rgba(95, 85, 126, 0.18);
+      animation: shimmer 7s ease infinite;
+    }
+    .boton-principal:hover { box-shadow: 0 15px 32px rgba(95, 85, 126, 0.25); }
+    .boton-secundario {
+      color: var(--opalo-profundo); background: rgba(255,255,255,0.52);
+      border: 1px solid rgba(80, 73, 105, 0.17); backdrop-filter: blur(10px);
+    }
+    .boton-secundario:hover { background: var(--blanco); box-shadow: var(--sombra); }
+    .tarjeta-opalo {
+      position: relative; isolation: isolate; overflow: hidden;
+      border: 1px solid transparent; border-radius: var(--radio);
+      background: linear-gradient(var(--blanco), var(--blanco)) padding-box,
+                  linear-gradient(135deg, rgba(200,182,226,.55), rgba(155,196,226,.35), rgba(168,213,186,.45), rgba(232,180,200,.55)) border-box;
+      box-shadow: 0 10px 32px rgba(44,42,62,0.045);
+      transition: transform var(--transicion), box-shadow var(--transicion), background var(--transicion);
+    }
+    .tarjeta-opalo:hover { transform: translateY(-7px); box-shadow: var(--sombra-hover); }
+    .tarjeta-opalo::after {
+      content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      opacity: 0; background: linear-gradient(120deg, rgba(200,182,226,.17), rgba(155,196,226,.13), rgba(168,213,186,.13), rgba(232,180,200,.17));
+      transition: opacity var(--transicion);
+    }
+    .tarjeta-opalo:hover::after { opacity: 1; }
+    .icono-caja {
+      display: grid; place-items: center; width: 54px; height: 54px;
+      border-radius: 18px; background: linear-gradient(135deg, #EEE5F6, #E3F0F5, #E8F3E9, #F7E6ED);
+      font-size: 1.55rem; flex: 0 0 auto;
+    }
+
+    /* =========================================================
+       3. NAVBAR
+       ========================================================= */
+    .navbar {
+      position: fixed; z-index: 1000; inset: 0 0 auto; height: 76px;
+      display: flex; align-items: center; background: rgba(245,241,232,0.88);
+      border-bottom: 1px solid rgba(44,42,62,0.06); backdrop-filter: blur(18px);
+      transition: box-shadow var(--transicion), background var(--transicion);
+    }
+    .navbar.con-sombra { box-shadow: 0 8px 30px rgba(44,42,62,0.07); background: rgba(245,241,232,0.96); }
+    .nav-interior { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .marca { display: inline-flex; align-items: center; gap: 10px; min-width: max-content; }
+    /* Logotipo oficial: variantes negra para fondos claros y blanca para fondos oscuros. */
+    .marca-logo { display: block; width: 158px; height: auto; max-height: 49px; object-fit: contain; }
+    .hero-sello-icono { display: block; width: 25px; height: 25px; flex: 0 0 25px; object-fit: contain; }
+    .marca-simbolo {
+      display: grid; place-items: center; width: 39px; height: 39px; border-radius: 14px;
+      color: var(--opalo-profundo); font-size: 1.12rem;
+      background: linear-gradient(135deg, var(--opalo-lila), var(--opalo-azul), var(--opalo-verde), var(--opalo-rosa));
+      box-shadow: 0 5px 14px rgba(105,91,135,0.15);
+    }
+    .marca-texto { font-family: "Cormorant Garamond", serif; font-size: 1.75rem; font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+    .marca-texto span { color: #8F719C; }
+    .nav-enlaces { display: flex; align-items: center; gap: clamp(15px, 2.4vw, 32px); }
+    .nav-enlaces a { position: relative; color: #514E60; font-size: 0.78rem; font-weight: 500; transition: color var(--transicion); }
+    .nav-enlaces a:not(.nav-cta)::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 0; height: 2px; border-radius: 3px; background: var(--opalo-lila); transition: width var(--transicion); }
+    .nav-enlaces a:hover { color: #826A9A; }
+    .nav-enlaces a:hover::after { width: 100%; }
+    .nav-enlaces .nav-cta { padding: 10px 17px; border-radius: 999px; background: var(--opalo-profundo); color: var(--blanco); }
+    .nav-enlaces .nav-cta:hover { background: #514568; }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--opalo-profundo); padding: 8px; cursor: pointer; }
+    .menu-toggle svg { display: block; width: 25px; height: 25px; }
+
+    /* =========================================================
+       4. HERO
+       ========================================================= */
+    .hero {
+      position: relative; min-height: 690px; display: flex; align-items: center;
+      padding: 135px 0 88px; overflow: hidden;
+      background: linear-gradient(135deg, #C8B6E2 0%, #9BC4E2 37%, #A8D5BA 68%, #E8B4C8 100%);
+      isolation: isolate;
+    }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: -1; filter: blur(2px); }
+    .hero::before { width: 440px; height: 440px; top: -210px; right: 7%; background: rgba(255,255,255,.27); }
+    .hero::after { width: 520px; height: 520px; bottom: -330px; left: -140px; background: rgba(255,255,255,.2); }
+    .hero-destellos { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: -1; }
+    .destello { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: white; box-shadow: 0 0 12px 4px rgba(255,255,255,.72); opacity: 0; animation: destellar 5s ease-in-out infinite; }
+    .destello:nth-child(1) { top: 20%; left: 12%; animation-delay: .4s; }
+    .destello:nth-child(2) { top: 33%; left: 48%; animation-delay: 1.6s; }
+    .destello:nth-child(3) { top: 72%; left: 34%; animation-delay: 2.4s; }
+    .destello:nth-child(4) { top: 18%; right: 15%; animation-delay: 3s; }
+    .destello:nth-child(5) { bottom: 17%; right: 28%; animation-delay: 1s; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 50px; }
+    .hero-copy { max-width: 630px; }
+    .hero-sello {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 19px;
+      padding: 7px 13px; border: 1px solid rgba(44,42,62,.15); border-radius: 999px;
+      color: #49445B; background: rgba(255,255,255,.32); backdrop-filter: blur(8px);
+      font-size: .69rem; font-weight: 600; letter-spacing: .11em; text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 0; font-family: "Cormorant Garamond", serif; font-size: clamp(5rem, 15vw, 8.5rem);
+      font-weight: 600; line-height: .82; letter-spacing: -.055em; color: #302C43;
+      text-shadow: 0 8px 30px rgba(255,255,255,.22);
+    }
+    .hero-slogan { max-width: 510px; margin: 25px 0 13px; font-family: "Cormorant Garamond", serif; font-size: clamp(1.55rem, 3.5vw, 2.25rem); font-weight: 600; line-height: 1.12; color: #3D3654; }
+    .hero-descripcion { max-width: 500px; margin: 0; color: #4B4B61; font-size: .94rem; }
+    .hero-acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-nota { margin-top: 22px; color: rgba(44,42,62,.72); font-size: .72rem; letter-spacing: .02em; }
+    .hero-visual { position: relative; width: min(100%, 460px); margin-inline: auto; }
+    /* PLACEHOLDER HERO: reemplaza este bloque por una fotografía propia cuando esté disponible. */
+    .opal-escena {
+      position: relative; display: grid; place-items: center; min-height: 350px;
+      border: 1px solid rgba(255,255,255,.6); border-radius: 46% 46% 38% 38% / 42% 42% 35% 35%;
+      background: linear-gradient(145deg, rgba(255,255,255,.55), rgba(255,255,255,.13)),
+                  radial-gradient(circle at 28% 28%, rgba(255,255,255,.85), transparent 30%),
+                  linear-gradient(135deg, #E3D3F0, #B8D7E8 38%, #C3E7D2 68%, #F0CBD9);
+      box-shadow: 0 30px 65px rgba(69,67,101,.17), inset 0 0 35px rgba(255,255,255,.6);
+      overflow: hidden;
+    }
+    .opal-escena::before { content: ""; position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,.52); box-shadow: 0 0 0 18px rgba(255,255,255,.09), 0 0 0 38px rgba(255,255,255,.07); }
+    .gema {
+      position: relative; width: 176px; height: 210px; transform: rotate(9deg);
+      border-radius: 48% 52% 43% 57% / 38% 38% 62% 62%;
+      background: radial-gradient(ellipse at 31% 23%, rgba(255,255,255,.95) 0 5%, transparent 22%),
+                  radial-gradient(ellipse at 65% 70%, rgba(232,180,200,.9), transparent 40%),
+                  linear-gradient(135deg, #E8DDF3 5%, #AED5E9 36%, #B9E2CD 60%, #EBC6D9 84%, #E8C9A0);
+      box-shadow: inset -15px -12px 30px rgba(107,92,135,.15), inset 12px 12px 25px rgba(255,255,255,.65), 0 26px 38px rgba(83,70,119,.2);
+      animation: flotar 6s ease-in-out infinite;
+    }
+    .gema::after { content: ""; position: absolute; width: 65%; height: 27%; top: 18%; left: 14%; border-radius: 50%; background: rgba(255,255,255,.42); filter: blur(13px); transform: rotate(-30deg); }
+    .hero-etiqueta { position: absolute; right: -8px; bottom: 22px; padding: 13px 18px; border-radius: 16px; background: rgba(255,255,255,.78); box-shadow: var(--sombra); backdrop-filter: blur(10px); color: #514A66; font-size: .73rem; font-weight: 600; }
+    .hero-etiqueta span { display: block; color: #8A779F; font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 700; }
+
+    /* =========================================================
+       5. PRODUCTOS
+       ========================================================= */
+    .productos-grid { display: grid; grid-template-columns: 1fr; gap: 17px; }
+    .producto-card { min-height: 230px; padding: 23px; display: flex; flex-direction: column; }
+    .producto-card .producto-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .producto-emoji { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #EEE5F6, #E3F0F5, #E8F3E9, #F7E6ED); font-size: 1.4rem; overflow: hidden; }
+    .producto-emoji img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .pago img { width: 20px; height: 20px; object-fit: contain; display: block; flex: 0 0 auto; }
+    .etiqueta-mas-vendido { padding: 5px 9px; border-radius: 999px; color: #735B29; background: #F7E8C8; font-size: .62rem; font-weight: 700; white-space: nowrap; }
+    .producto-card h3 { margin: 17px 0 6px; font-size: .99rem; font-weight: 600; }
+    .producto-card p { margin: 0; color: var(--opalo-gris); font-size: .78rem; line-height: 1.65; }
+    .producto-precio { margin-top: auto; padding-top: 16px; color: #77638F; font-size: .75rem; font-weight: 700; }
+
+    /* =========================================================
+       6. PERSONALIZACIÓN
+       ========================================================= */
+    .personalizacion { overflow: hidden; background: linear-gradient(135deg, rgba(200,182,226,.35), rgba(155,196,226,.3), rgba(168,213,186,.28), rgba(232,180,200,.32)); }
+    .personalizacion::before { content: ""; position: absolute; width: 330px; height: 330px; right: -130px; top: -160px; border-radius: 50%; border: 1px solid rgba(255,255,255,.6); box-shadow: 0 0 0 25px rgba(255,255,255,.12), 0 0 0 50px rgba(255,255,255,.1); }
+    .personalizacion-grid { display: grid; grid-template-columns: 1fr; gap: 35px; align-items: center; }
+    .personalizacion-copy { max-width: 570px; }
+    .personalizacion-copy .titulo-seccion { max-width: 520px; }
+    .personalizacion-copy > p { color: #5D596B; }
+    .lineas-servicio { display: grid; gap: 14px; margin: 27px 0; }
+    .linea-servicio { display: flex; gap: 15px; padding: 19px; border: 1px solid rgba(255,255,255,.8); border-radius: 19px; background: rgba(255,255,255,.59); backdrop-filter: blur(9px); }
+    .linea-numero { display: grid; place-items: center; width: 39px; height: 39px; flex: 0 0 auto; border-radius: 14px; background: var(--opalo-profundo); color: white; font-family: "Cormorant Garamond", serif; font-size: 1.25rem; }
+    .linea-servicio h3 { margin: 0 0 4px; font-size: .9rem; }
+    .linea-servicio p { margin: 0; color: var(--opalo-gris); font-size: .76rem; line-height: 1.65; }
+    .personalizacion-visual { position: relative; min-height: 360px; display: grid; place-items: center; }
+    /* PLACEHOLDER PERSONALIZACIÓN: reemplaza por una foto de materiales o del proceso artesanal. */
+    .muestrario {
+      width: min(100%, 430px); min-height: 330px; padding: 28px; border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,.83), rgba(255,255,255,.46));
+      border: 1px solid rgba(255,255,255,.9); box-shadow: var(--sombra); transform: rotate(2deg);
+    }
+    .muestrario h3 { margin: 2px 0 19px; font-family: "Cormorant Garamond", serif; font-size: 1.8rem; }
+    .muestras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+    .muestra { display: grid; place-items: center; min-height: 76px; border-radius: 16px; background: rgba(255,255,255,.75); color: #5C566D; font-size: .68rem; font-weight: 500; text-align: center; }
+    .muestra span { display: block; font-size: 1.6rem; line-height: 1.2; }
+    .muestrario-nota { margin: 20px 0 0; color: var(--opalo-gris); font-size: .72rem; }
+    .opciones-personalizacion { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 19px; }
+    .opciones-personalizacion span { padding: 7px 11px; border: 1px solid rgba(94,84,117,.13); border-radius: 999px; background: rgba(255,255,255,.55); color: #514C61; font-size: .68rem; }
+
+    /* =========================================================
+       7. RANGOS DE PRECIO
+       ========================================================= */
+    .precios-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .precio-card { padding: 28px; }
+    .precio-card.destacado { background: linear-gradient(150deg, #FBF8F2, #F1EAF6, #EAF3F5); }
+    .precio-card .precio-tipo { color: #85729D; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .precio-card h3 { margin: 10px 0 8px; font-family: "Cormorant Garamond", serif; font-size: 2.15rem; line-height: 1; }
+    .precio-valor { margin: 0 0 13px; color: #62537D; font-size: 1.15rem; font-weight: 700; }
+    .precio-card p:last-child { margin: 0; color: var(--opalo-gris); font-size: .79rem; }
+    .nota-precios { max-width: 700px; margin: 22px auto 0; text-align: center; color: var(--opalo-gris); font-size: .72rem; }
+
+    /* =========================================================
+       8. NOSOTROS: MISIÓN, VISIÓN, VALOR E HISTORIA
+       ========================================================= */
+    .nosotros-grid { display: grid; grid-template-columns: 1fr; gap: 17px; }
+    .nosotros-card { padding: 26px; }
+    .nosotros-card .icono-caja { margin-bottom: 17px; }
+    .nosotros-card h3 { margin: 0 0 10px; font-family: "Cormorant Garamond", serif; font-size: 1.75rem; line-height: 1.1; }
+    .nosotros-card p { margin: 0; color: var(--opalo-gris); font-size: .79rem; }
+    .historia-panel { display: grid; grid-template-columns: 1fr; gap: 25px; align-items: center; margin-top: 25px; padding: 30px; border-radius: 26px; background: var(--opalo-profundo); color: var(--opalo-blanco); overflow: hidden; position: relative; }
+    .historia-panel::after { content: "✧"; position: absolute; right: 20px; top: -25px; color: rgba(255,255,255,.08); font-size: 13rem; line-height: 1; }
+    .historia-panel h3 { margin: 0 0 10px; font-family: "Cormorant Garamond", serif; font-size: 2.2rem; line-height: 1.1; }
+    .historia-panel p { max-width: 700px; margin: 0; color: rgba(245,241,232,.8); font-size: .82rem; }
+    .datos-empresa { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .dato-chip { padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: #F4EAF7; font-size: .67rem; }
+    .valores-wrap { margin-top: 37px; text-align: center; }
+    .valores-wrap h3 { margin: 0 0 17px; font-family: "Cormorant Garamond", serif; font-size: 1.8rem; }
+    .valores-lista { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .valor { padding: 10px 17px; border: 1px solid rgba(106,91,132,.16); border-radius: 999px; background: rgba(255,255,255,.7); color: #5C536F; font-size: .75rem; }
+
+    /* =========================================================
+       9. SOSTENIBILIDAD
+       ========================================================= */
+    .sostenibilidad-grid { display: grid; grid-template-columns: 1fr; gap: 17px; }
+    .sostenibilidad-card { display: flex; align-items: flex-start; gap: 17px; padding: 24px; }
+    .sostenibilidad-card h3 { margin: 0 0 6px; font-size: .91rem; }
+    .sostenibilidad-card p { margin: 0; color: var(--opalo-gris); font-size: .77rem; }
+    .sostenibilidad-cierre { margin: 27px auto 0; max-width: 650px; text-align: center; color: #6C765F; font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; }
+
+    /* =========================================================
+       10. EQUIPO
+       ========================================================= */
+    .equipo-grid { display: grid; grid-template-columns: 1fr; gap: 17px; }
+    .integrante { padding: 27px 22px; text-align: center; }
+    .avatar {
+      display: grid; place-items: center; width: 84px; height: 84px; margin: 0 auto 17px;
+      border: 4px solid rgba(255,255,255,.85); border-radius: 50%;
+      background: linear-gradient(135deg, #DCCFEB, #BCD9E8, #C5E5D1, #F0CBD9);
+      color: #514864; font-family: "Cormorant Garamond", serif; font-size: 1.85rem; font-weight: 700;
+      box-shadow: 0 8px 20px rgba(85,73,113,.13);
+    }
+    .integrante h3 { margin: 0 0 7px; font-family: "Cormorant Garamond", serif; font-size: 1.45rem; line-height: 1.05; }
+    .integrante p { margin: 0; color: var(--opalo-gris); font-size: .72rem; line-height: 1.6; }
+
+    /* =========================================================
+       11. BENEFICIOS
+       ========================================================= */
+    .beneficios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .beneficio { display: flex; align-items: center; gap: 10px; min-height: 74px; padding: 14px; border-radius: 17px; background: rgba(255,255,255,.72); border: 1px solid rgba(200,182,226,.25); }
+    .beneficio-icono { display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 auto; border-radius: 50%; background: #E3F0E5; color: #477A5B; font-size: .85rem; font-weight: 700; }
+    .beneficio span:last-child { color: #514D60; font-size: .69rem; font-weight: 500; line-height: 1.35; }
+
+    /* =========================================================
+       12. MÉTODOS DE PAGO
+       ========================================================= */
+    .pagos-panel { padding: 31px 22px; border-radius: 27px; background: linear-gradient(120deg, #F1EAF6, #EAF3F6, #EAF4EC, #F8EAF0); text-align: center; }
+    .pagos-panel h2 { margin: 0; font-family: "Cormorant Garamond", serif; font-size: 2.35rem; line-height: 1.05; }
+    .pagos-panel > p { max-width: 670px; margin: 12px auto 22px; color: var(--opalo-gris); font-size: .78rem; }
+    .pagos-lista { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .pago { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid rgba(92,83,112,.13); border-radius: 999px; background: rgba(255,255,255,.77); color: #4D485D; font-size: .76rem; font-weight: 600; }
+    .pago span { font-size: 1rem; }
+    .pagos-nota { display: block; margin-top: 18px; color: #777184; font-size: .67rem; }
+
+    /* =========================================================
+       13. CONTACTO Y FORMULARIO
+       ========================================================= */
+    .contacto-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
+    .contacto-copy { padding-top: 4px; }
+    .contacto-copy > p { color: var(--opalo-gris); font-size: .84rem; }
+    .contacto-datos { display: grid; gap: 13px; margin: 26px 0; }
+    .contacto-dato { display: flex; align-items: center; gap: 13px; color: #514D60; font-size: .78rem; }
+    .contacto-dato .icono-caja { width: 43px; height: 43px; border-radius: 14px; font-size: 1.2rem; }
+    .redes { display: flex; flex-wrap: wrap; gap: 9px; }
+    .red-social { padding: 9px 13px; border: 1px solid rgba(94,84,117,.16); border-radius: 999px; background: white; color: #5C536F; font-size: .7rem; font-weight: 600; transition: background var(--transicion), transform var(--transicion); }
+    .red-social:hover { transform: translateY(-2px); background: #F1EAF6; }
+    .formulario { padding: 26px; }
+    .formulario h3 { margin: 0 0 5px; font-family: "Cormorant Garamond", serif; font-size: 2rem; line-height: 1.1; }
+    .formulario-intro { margin: 0 0 20px; color: var(--opalo-gris); font-size: .72rem; }
+    .campo { margin-bottom: 14px; }
+    .campo label { display: block; margin-bottom: 6px; color: #514D60; font-size: .72rem; font-weight: 600; }
+    .campo input, .campo select, .campo textarea {
+      display: block; width: 100%; padding: 12px 14px; border: 1px solid #DFD9E5;
+      border-radius: 13px; background: #FFFEFC; color: var(--opalo-profundo); font-size: .76rem;
+      transition: border-color var(--transicion), box-shadow var(--transicion);
+    }
+    .campo input::placeholder, .campo textarea::placeholder { color: #9A96A3; }
+    .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: #A995C8; box-shadow: 0 0 0 3px rgba(200,182,226,.22); outline: none; }
+    .campo textarea { min-height: 112px; resize: vertical; }
+    .formulario .boton { width: 100%; }
+    .estado-formulario { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: #EAF4EC; color: #315F40; font-size: .72rem; }
+    .estado-formulario.visible { display: block; }
+    .aviso-formulario { margin: 12px 0 0; color: #817C8B; font-size: .64rem; line-height: 1.5; }
+
+    /* =========================================================
+       14. FOOTER Y BOTÓN FLOTANTE
+       ========================================================= */
+    .footer { padding: 56px 0 25px; background: #292738; color: #F5F1E8; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    .footer .marca-logo { width: 174px; max-height: 54px; }
+    .footer-descripcion { max-width: 330px; margin: 14px 0 0; color: rgba(245,241,232,.67); font-size: .75rem; }
+    .footer h3 { margin: 0 0 14px; color: #E9DDF4; font-family: "Cormorant Garamond", serif; font-size: 1.45rem; }
+    .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 15px; }
+    .footer-links a, .footer-redes a { color: rgba(245,241,232,.72); font-size: .72rem; transition: color var(--transicion); }
+    .footer-links a:hover, .footer-redes a:hover { color: white; }
+    .footer-redes { display: flex; flex-wrap: wrap; gap: 13px; }
+    .footer-bottom { display: flex; flex-direction: column; gap: 9px; margin-top: 37px; padding-top: 21px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(245,241,232,.54); font-size: .64rem; }
+    .whatsapp-flotante {
+      position: fixed; z-index: 900; right: 18px; bottom: 18px; display: inline-flex;
+      align-items: center; justify-content: center; gap: 9px; min-height: 54px; padding: 0 18px;
+      border: 2px solid rgba(255,255,255,.85); border-radius: 999px; background: #477E60;
+      color: white; font-size: .75rem; font-weight: 700; box-shadow: 0 12px 30px rgba(31,86,53,.25);
+      transition: transform var(--transicion), box-shadow var(--transicion);
+    }
+    .whatsapp-flotante:hover { transform: translateY(-4px); box-shadow: 0 17px 35px rgba(31,86,53,.32); }
+    .whatsapp-flotante svg { width: 21px; height: 21px; fill: currentColor; }
+    .toast { position: fixed; z-index: 1200; left: 50%; bottom: 25px; width: min(calc(100% - 36px), 440px); padding: 13px 17px; border-radius: 14px; background: var(--opalo-profundo); color: white; font-size: .75rem; text-align: center; box-shadow: var(--sombra); opacity: 0; transform: translate(-50%, 20px); pointer-events: none; transition: opacity var(--transicion), transform var(--transicion); }
+    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
+
+    /* =========================================================
+       15. ANIMACIONES Y ACCESIBILIDAD
+       ========================================================= */
+    .revelar { opacity: 0; transform: translateY(24px); transition: opacity 750ms cubic-bezier(.2,.75,.25,1), transform 750ms cubic-bezier(.2,.75,.25,1); }
+    .revelar.visible { opacity: 1; transform: translateY(0); }
+    @keyframes brillo-titulo { to { background-position: 220% center; } }
+    @keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    @keyframes destellar { 0%,100% { opacity: 0; transform: scale(.5); } 45%,60% { opacity: .9; transform: scale(1.25); } }
+    @keyframes flotar { 0%,100% { transform: translateY(0) rotate(9deg); } 50% { transform: translateY(-13px) rotate(5deg); } }
+
+    /* 480 px: teléfonos grandes */
+    @media (min-width: 480px) {
+      .productos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .precios-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .equipo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sostenibilidad-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .beneficios-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: 1.3fr 1fr; }
+    }
+
+    /* 768 px: tabletas */
+    @media (min-width: 768px) {
+      body { font-size: 16px; }
+      .seccion { padding: 108px 0; }
+      .hero { min-height: 730px; }
+      .hero-grid { grid-template-columns: 1.08fr .92fr; gap: 30px; }
+      .hero-visual { width: 100%; }
+      .opal-escena { min-height: 430px; }
+      .productos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .personalizacion-grid { grid-template-columns: 1.05fr .95fr; gap: 45px; }
+      .precios-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .nosotros-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .historia-panel { grid-template-columns: 1fr auto; padding: 38px; }
+      .sostenibilidad-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .equipo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .contacto-grid { grid-template-columns: .9fr 1.1fr; gap: 55px; }
+      .footer-grid { grid-template-columns: 1.4fr .8fr .8fr; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+
+    /* 1024 px: escritorio */
+    @media (min-width: 1024px) {
+      .productos-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .producto-card { min-height: 244px; }
+      .historia-panel { padding: 44px 50px; }
+      .beneficios-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .hero { min-height: 760px; }
+    }
+
+    @media (max-width: 767px) {
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-enlaces {
+        position: fixed; top: 76px; left: 0; right: 0; display: flex; flex-direction: column;
+        align-items: stretch; gap: 0; padding: 12px 22px 25px; background: rgba(245,241,232,.98);
+        border-bottom: 1px solid rgba(44,42,62,.08); box-shadow: 0 18px 35px rgba(44,42,62,.1);
+        opacity: 0; visibility: hidden; transform: translateY(-12px);
+        transition: opacity var(--transicion), visibility var(--transicion), transform var(--transicion);
+      }
+      .nav-enlaces.abierto { opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav-enlaces a { padding: 13px 4px; border-bottom: 1px solid rgba(44,42,62,.06); font-size: .9rem; }
+      .nav-enlaces a:not(.nav-cta)::after { display: none; }
+      .nav-enlaces .nav-cta { margin-top: 12px; text-align: center; border: 0; }
+    }
+    @media (max-width: 479px) {
+      .marca-logo { width: 137px; max-height: 43px; }
+      .contenedor { width: min(calc(100% - 30px), var(--ancho-contenido)); }
+      .seccion { padding: 76px 0; }
+      .hero { padding-top: 120px; }
+      .hero h1 { font-size: clamp(4.5rem, 23vw, 6rem); }
+      .hero-acciones { align-items: stretch; }
+      .hero-acciones .boton { flex: 1 1 100%; }
+      .opal-escena { min-height: 290px; }
+      .gema { width: 135px; height: 170px; }
+      .hero-etiqueta { right: 0; bottom: 10px; }
+      .beneficios-grid { grid-template-columns: 1fr 1fr; }
+      .beneficio { padding: 11px 9px; gap: 7px; }
+      .beneficio span:last-child { font-size: .64rem; }
+      .formulario { padding: 21px; }
+      .whatsapp-flotante { right: 12px; bottom: 12px; width: 54px; min-height: 54px; padding: 0; }
+      .whatsapp-flotante .whatsapp-texto { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-marca { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .revelar { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    PROYECTO LOCAL (Windows): C:\Users\Usuario\Documents\Cepeda\
+    Página principal: index.html
+    Fotografías futuras: assets\images\ (usa rutas relativas en el HTML).
+    La carpeta local sirve para desarrollar; para publicar el sitio en Internet
+    habrá que subir esta carpeta a un servicio de hosting o servidor web.
+  -->
+  <!-- =======================================================
+       NAVBAR
+       ======================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="contenedor nav-interior">
+      <a class="marca" href="#inicio" aria-label="Opallios, ir al inicio">
+        <!-- Logotipo oficial en versión negra para fondos claros. -->
+        <img class="marca-logo" src="LogoOpallios.png" alt="Opallios">
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navEnlaces">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav class="nav-enlaces" id="navEnlaces" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#personalizacion">Personalización</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto" class="nav-cta">Contacto <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+    <section class="hero" id="inicio" aria-labelledby="heroTitulo">
+      <div class="hero-destellos" aria-hidden="true">
+        <span class="destello"></span><span class="destello"></span><span class="destello"></span><span class="destello"></span><span class="destello"></span>
+      </div>
+      <div class="contenedor hero-grid">
+        <div class="hero-copy revelar">
+          <span class="hero-sello"><img class="hero-sello-icono" src="LogoOpallios - copia.png" alt=""> Bisutería artesanal · Colombia</span>
+          <h1 id="heroTitulo">Opallios</h1>
+          <p class="hero-slogan">No son solo accesorios, son historias que llevas contigo</p>
+          <p class="hero-descripcion">Bisutería artesanal personalizada. Creamos accesorios únicos que cuentan tu historia.</p>
+          <div class="hero-acciones">
+            <a class="boton boton-principal" href="#personalizacion">Diseña tu accesorio <span aria-hidden="true">✦</span></a>
+            <a class="boton boton-secundario" href="#productos">Ver catálogo <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="hero-nota">Hecho con cariño e intención · Tu estilo, tu historia, tu Opallios.</p>
+        </div>
+
+        <div class="hero-visual revelar">
+          <!-- PLACEHOLDER DE IMAGEN: cuando tengas la foto, guárdala en
+               Cepeda\assets\images\hero-opallios.webp y reemplaza .opal-escena
+               por: <img class="imagen-real" src="assets/images/hero-opallios.webp" alt="Accesorios artesanales de Opallios">. -->
+          <div class="opal-escena" role="img" aria-label="Ilustración abstracta de una gema iridiscente inspirada en el ópalo">
+            <div class="gema" aria-hidden="true"></div>
+          </div>
+          <div class="hero-etiqueta">Una pieza, mil formas de ser<span>Percibir un cambio de color</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PRODUCTOS
+         ===================================================== -->
+    <section class="seccion" id="productos" aria-labelledby="productosTitulo">
+      <div class="contenedor">
+        <div class="encabezado-seccion revelar">
+          <p class="eyebrow">Pequeños detalles, grandes historias</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="productosTitulo">Encuentra tu próximo favorito</h2>
+          <p class="intro-seccion">Explora nuestras categorías y encuentra esa pieza que conecta con tu personalidad. Cada creación puede llevar tu toque especial.</p>
+        </div>
+
+        <div class="productos-grid">
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Aretes.jpg" alt="Aretes"></span><span class="etiqueta-mas-vendido">⭐ Más vendido</span></div>
+            <h3>Aretes</h3><p>Diseños sutiles o protagonistas para acompañar cada versión de ti.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Collares.jpg" alt="Collares"></span></div>
+            <h3>Collares y chokers</h3><p>Capas, dijes y detalles que cuentan algo sobre quien los lleva.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Manillas.jpg" alt="Manillas"></span></div>
+            <h3>Manillas / pulseras</h3><p>Combinaciones de color y textura para llevar cerca tus recuerdos.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="AccesoriosCabello.jpg" alt="AccesoriosCabello"></span></div>
+            <h3>Accesorios para el cabello</h3><p>Detalles creativos que le dan un giro especial a tu peinado.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Llaveros.jpg" alt="Llaveros"></span></div>
+            <h3>Llaveros</h3><p>Un detalle útil y personal para llevar tus símbolos a todas partes.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Phonecharms.jpg" alt="Phonecharms"></span></div>
+            <h3>Phone charms</h3><p>Color, movimiento y personalidad para darle vida a tu celular.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Tobilleras.png" alt="Tobilleras"></span></div>
+            <h3>Tobilleras</h3><p>Piezas delicadas para sumar un detalle diferente a tu estilo.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Portagafas.jpg" alt="Portagafas"></span></div>
+            <h3>Porta gafas</h3><p>Practicidad con un diseño que también habla de ti.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Bolsos.png" alt="Bolsos"></span></div>
+            <h3>Bolsos en pedrería</h3><p>Piezas con brillo y carácter para ocasiones que merecen destacar.</p><span class="producto-precio">Desde $60.000 COP</span>
+          </article>
+          <article class="producto-card tarjeta-opalo revelar">
+            <div class="producto-top"><span class="producto-emoji" aria-hidden="true"><img src="Colgantes.jpg" alt="Colgantes"></span></div>
+            <h3>Colgantes</h3><p>Dijes y piezas especiales para dar significado a tus combinaciones.</p><span class="producto-precio">Desde $6.000 COP</span>
+          </article>
+        </div>
+        <p class="nota-precios">Los precios son orientativos y pueden variar según materiales, complejidad y nivel de personalización.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PERSONALIZACIÓN
+         ===================================================== -->
+    <section class="seccion personalizacion" id="personalizacion" aria-labelledby="personalizacionTitulo">
+      <div class="contenedor personalizacion-grid">
+        <div class="personalizacion-copy revelar">
+          <p class="eyebrow">Tu imaginación toma forma</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="personalizacionTitulo">Un accesorio tan único como tu historia</h2>
+          <p>En Opallios creemos que cada persona tiene una manera distinta de expresarse. Por eso ofrecemos dos líneas de personalización, con opciones para crear una pieza desde el principio o transformar una idea que ya existe.</p>
+          <p class="microtexto"><strong>Dos caminos, una misma creatividad:</strong> según el estudio de mercado, las dos líneas presentan una distribución de referencia del 50/50.</p>
+          <div class="lineas-servicio">
+            <article class="linea-servicio">
+              <span class="linea-numero" aria-hidden="true">01</span>
+              <div><h3>Crea desde cero</h3><p>Elige cada detalle: colores, letras, dijes, materiales y combinaciones. Tu idea guía el proceso y la convertimos en una pieza hecha para ti.</p></div>
+            </article>
+            <article class="linea-servicio">
+              <span class="linea-numero" aria-hidden="true">02</span>
+              <div><h3>Personaliza una base</h3><p>Parte de uno de nuestros diseños prediseñados y modifícalo a tu gusto. Conserva la inspiración inicial y dale tu propio sello.</p></div>
+            </article>
+          </div>
+          <p><strong>¿Qué puedes elegir?</strong> Materiales como acero inoxidable, perlas y mostacillas; además de colores, tamaños, cierres y presupuesto.</p>
+          <div class="opciones-personalizacion" aria-label="Opciones de personalización">
+            <span>Acero inoxidable</span><span>Perlas</span><span>Mostacillas</span><span>Colores</span><span>Tamaños</span><span>Cierres</span><span>Presupuesto</span>
+          </div>
+          <div style="margin-top:27px"><a class="boton boton-principal" href="#contacto">Cuéntanos tu idea <span aria-hidden="true">↗</span></a></div>
+        </div>
+
+        <div class="personalizacion-visual revelar">
+          <!-- PLACEHOLDER DE FOTOGRAFÍA: guarda la foto en
+               Cepeda\assets\images\personalizacion-materiales.webp y, cuando exista,
+               reemplaza este muestrario por una etiqueta <img> con alt descriptivo. -->
+          <div class="muestrario" role="img" aria-label="Muestrario ilustrado de materiales y elementos para personalizar accesorios">
+            <p class="eyebrow">Tu combinación perfecta</p>
+            <h3>Elige los detalles</h3>
+            <div class="muestras">
+              <div class="muestra"><span>🤍</span>Perlas</div>
+              <div class="muestra"><span>🌈</span>Colores</div>
+              <div class="muestra"><span>✧</span>Dijes</div>
+              <div class="muestra"><span>🫧</span>Mostacillas</div>
+              <div class="muestra"><span>🔗</span>Acero</div>
+              <div class="muestra"><span>💌</span>Letras</div>
+            </div>
+            <p class="muestrario-nota">Cada elección suma un pequeño significado a tu pieza.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         RANGOS DE PRECIO
+         ===================================================== -->
+    <section class="seccion seccion-suave" id="precios" aria-labelledby="preciosTitulo">
+      <div class="contenedor">
+        <div class="encabezado-seccion revelar">
+          <p class="eyebrow">Hay una pieza para cada ocasión</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="preciosTitulo">Precios que se adaptan a tu idea</h2>
+          <p class="intro-seccion">Queremos que puedas crear y regalar sin perder de vista tu presupuesto. Estos son nuestros rangos orientativos.</p>
+        </div>
+        <div class="precios-grid">
+          <article class="precio-card tarjeta-opalo revelar">
+            <span class="precio-tipo">Para empezar</span><h3>Básico</h3>
+            <p class="precio-valor">Desde $6.000 COP</p>
+            <p>Aretes sencillos, phone charms y pequeños detalles personalizados para acompañarte todos los días.</p>
+          </article>
+          <article class="precio-card tarjeta-opalo destacado revelar">
+            <span class="precio-tipo">El punto de encuentro</span><h3>Promedio</h3>
+            <p class="precio-valor">$10.000 - $25.000 COP</p>
+            <p>Collares y manillas con combinaciones especiales, dijes y acabados elegidos por ti.</p>
+          </article>
+          <article class="precio-card tarjeta-opalo revelar">
+            <span class="precio-tipo">Piezas protagonistas</span><h3>Premium</h3>
+            <p class="precio-valor">$60.000 - $180.000 COP</p>
+            <p>Bolsos en pedrería y kits combo con mayor nivel de detalle y elaboración.</p>
+          </article>
+        </div>
+        <p class="nota-precios">El valor final se confirma antes de iniciar la elaboración, de acuerdo con el diseño y los materiales seleccionados.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         NOSOTROS
+         ===================================================== -->
+    <section class="seccion" id="nosotros" aria-labelledby="nosotrosTitulo">
+      <div class="contenedor">
+        <div class="encabezado-seccion revelar">
+          <p class="eyebrow">Lo que nos inspira</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="nosotrosTitulo">Una marca con muchas formas de brillar</h2>
+          <p class="intro-seccion">Opallios nace de la creatividad, la diversidad y las ganas de convertir ideas en accesorios con significado.</p>
+        </div>
+
+        <div class="nosotros-grid">
+          <article class="nosotros-card tarjeta-opalo revelar">
+            <div class="icono-caja" aria-hidden="true">🌱</div>
+            <h3>Misión</h3>
+            <p>Nutrir la creatividad de nuestros clientes a través de accesorios que reflejen su personalidad y estilo, transformando ideas en realidad mediante nuestras habilidades, creando identidad y embelleciendo el significado de las historias. Motivamos una apariencia con carácter y una autoestima alta.</p>
+          </article>
+          <article class="nosotros-card tarjeta-opalo revelar">
+            <div class="icono-caja" aria-hidden="true">🔭</div>
+            <h3>Visión</h3>
+            <p>Ser una marca reconocida a nivel nacional por la creación de accesorios personalizados que trascienden lo estético, convirtiéndose en una forma de expresión personal y emocional, manteniendo siempre la esencia artesanal y creativa, innovando en diseños, técnicas y colecciones exclusivas.</p>
+          </article>
+          <article class="nosotros-card tarjeta-opalo revelar">
+            <div class="icono-caja" aria-hidden="true">💜</div>
+            <h3>Propuesta de valor</h3>
+            <p>No vendemos solo accesorios: vendemos experiencias, emociones y estilos únicos. Las ideas de tu imaginación se vuelven realidad en piezas hechas con cariño, simbolismo y diversidad.</p>
+          </article>
+        </div>
+
+        <article class="historia-panel revelar">
+          <div>
+            <p class="eyebrow" style="color:#D6C5E9">Nuestra historia</p>
+            <h3>Todo comienza con una idea y un destello.</h3>
+            <p>Opallios nace en 2026 en Tunjuelito, Bogotá, como un emprendimiento de cuatro jóvenes que comparten la creatividad y el deseo de crear accesorios personalizados. El nombre une las raíces griegas “ops/ophthalmos” (ojo, visión) y “allos” (cambio, distinto); evoca el fenómeno del ópalo al cambiar de color con la luz. Así como cada reflejo revela un matiz diferente, creemos que cada accesorio puede expresar una parte de tu historia.</p>
+            <div class="datos-empresa">
+              <span class="dato-chip">Opallios S.A.S. · O.SAS</span>
+              <span class="dato-chip">NIT: 600023321-3</span>
+              <span class="dato-chip">Bogotá D.C., Tunjuelito</span>
+              <span class="dato-chip">Constitución: 2 de septiembre de 2026</span>
+              <span class="dato-chip">Sociedad por Acciones Simplificada · Ley 1258 de 2008</span>
+            </div>
+          </div>
+          <div aria-hidden="true" style="font-size:4rem;opacity:.9;align-self:center">✧</div>
+        </article>
+
+        <div class="valores-wrap revelar">
+          <h3>Lo que nos mueve</h3>
+          <div class="valores-lista">
+            <span class="valor">✦ Creatividad</span><span class="valor">✦ Diversidad</span><span class="valor">✦ Autenticidad</span><span class="valor">✦ Sostenibilidad</span><span class="valor">✦ Cercanía</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SOSTENIBILIDAD
+         ===================================================== -->
+    <section class="seccion seccion-suave" id="sostenibilidad" aria-labelledby="sostenibilidadTitulo">
+      <div class="contenedor">
+        <div class="encabezado-seccion revelar">
+          <p class="eyebrow">Cuidar también es parte de crear</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="sostenibilidadTitulo">Un detalle bonito, con intención</h2>
+          <p class="intro-seccion">Buscamos que la experiencia Opallios sea especial desde la creación hasta la forma de entregar cada pieza.</p>
+        </div>
+        <div class="sostenibilidad-grid">
+          <article class="sostenibilidad-card tarjeta-opalo revelar">
+            <div class="icono-caja" aria-hidden="true">🌿</div>
+            <div><h3>Empaques conscientes</h3><p>Empaques biodegradables y reutilizables de tela para acompañar tus accesorios y darles una segunda vida.</p></div>
+          </article>
+          <article class="sostenibilidad-card tarjeta-opalo revelar">
+            <div class="icono-caja" aria-hidden="true">♻️</div>
+            <div><h3>Producción bajo pedido</h3><p>Elaboramos según cada solicitud para procurar menos desperdicio y crear piezas con un propósito claro.</p></div>
+          </article>
+          <article class="sostenibilidad-card tarjeta-opalo revelar">
+            <div class="icono-caja" aria-hidden="true">🍃</div>
+            <div><h3>Opciones de materiales</h3><p>Contamos con materiales hipoalergénicos cuando se soliciten, según disponibilidad y especificaciones de cada diseño.</p></div>
+          </article>
+        </div>
+        <p class="sostenibilidad-cierre revelar">Crear con cariño también es pensar en lo que dejamos.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         EQUIPO
+         ===================================================== -->
+    <section class="seccion" id="equipo" aria-labelledby="equipoTitulo">
+      <div class="contenedor">
+        <div class="encabezado-seccion revelar">
+          <p class="eyebrow">Cuatro miradas, una misma intención</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="equipoTitulo">Las personas detrás de Opallios</h2>
+          <p class="intro-seccion">Un equipo que reúne ideas, organización y talento para darle vida a cada historia.</p>
+        </div>
+        <div class="equipo-grid">
+          <article class="integrante tarjeta-opalo revelar">
+            <!-- AVATAR PLACEHOLDER: reemplaza las iniciales por una fotografía del integrante si así lo desean. -->
+            <div class="avatar" role="img" aria-label="Avatar con iniciales CC">CC</div>
+            <h3>Caroll Ximena Cepeda Linares</h3><p>Gerente General, CEO y Representante Legal</p>
+          </article>
+          <article class="integrante tarjeta-opalo revelar">
+            <!-- AVATAR PLACEHOLDER -->
+            <div class="avatar" role="img" aria-label="Avatar con iniciales EG">EG</div>
+            <h3>Emily García Acosta</h3><p>Directora Administrativa y Financiera</p>
+          </article>
+          <article class="integrante tarjeta-opalo revelar">
+            <!-- AVATAR PLACEHOLDER -->
+            <div class="avatar" role="img" aria-label="Avatar con iniciales MS">MS</div>
+            <h3>Miguel Ángel Sarmiento Moreno</h3><p>Director Comercial y de Sistemas</p>
+          </article>
+          <article class="integrante tarjeta-opalo revelar">
+            <!-- AVATAR PLACEHOLDER -->
+            <div class="avatar" role="img" aria-label="Avatar con iniciales MI">MI</div>
+            <h3>María Isabella Sánchez Jiménez</h3><p>Directora de Logística y Talento Humano</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         BENEFICIOS
+         ===================================================== -->
+    <section class="seccion seccion-suave" id="beneficios" aria-labelledby="beneficiosTitulo">
+      <div class="contenedor">
+        <div class="encabezado-seccion revelar">
+          <p class="eyebrow">Detalles que hacen la diferencia</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="beneficiosTitulo">Tu experiencia, nuestra prioridad</h2>
+        </div>
+        <div class="beneficios-grid">
+          <div class="beneficio revelar"><span class="beneficio-icono" aria-hidden="true">✓</span><span>100% personalizable</span></div>
+          <div class="beneficio revelar"><span class="beneficio-icono" aria-hidden="true">✓</span><span>Materiales hipoalergénicos</span></div>
+          <div class="beneficio revelar"><span class="beneficio-icono" aria-hidden="true">✓</span><span>Empaque eco-sostenible</span></div>
+          <div class="beneficio revelar"><span class="beneficio-icono" aria-hidden="true">✓</span><span>Garantía en cada producto</span></div>
+          <div class="beneficio revelar"><span class="beneficio-icono" aria-hidden="true">✓</span><span>Precios flexibles</span></div>
+          <div class="beneficio revelar"><span class="beneficio-icono" aria-hidden="true">✓</span><span>Envíos a todo Colombia</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         MÉTODOS DE PAGO
+         ===================================================== -->
+    <section class="seccion" id="pagos" aria-labelledby="pagosTitulo">
+      <div class="contenedor">
+        <div class="pagos-panel revelar">
+          <p class="eyebrow" style="justify-content:center">Fácil y a tu manera</p>
+          <h2 id="pagosTitulo" class="titulo-iridiscente">Métodos de pago</h2>
+          <p>Queremos que comprar sea sencillo. Puedes elegir el método que mejor se acomode a ti y coordinar los detalles al confirmar tu pedido.</p>
+          <div class="pagos-lista">
+            <span class="pago"><img src="Nequi.png" alt="Nequi"> Nequi</span>
+            <span class="pago"><img src="Daviplata.png" alt="Daviplata"> Daviplata</span>
+            <span class="pago"><img src="Bre-b.png" alt="Bre-B"> BRE-B</span>
+            <span class="pago"><span aria-hidden="true">💵</span> Efectivo</span>
+            <span class="pago"><span aria-hidden="true">🏦</span> Transferencia bancaria</span>
+          </div>
+          <span class="pagos-nota">Según el estudio de mercado, el 87.5% prefiere pago digital o mixto.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CONTACTO / PEDIDOS
+         ===================================================== -->
+    <section class="seccion seccion-suave" id="contacto" aria-labelledby="contactoTitulo">
+      <div class="contenedor contacto-grid">
+        <div class="contacto-copy revelar">
+          <p class="eyebrow">Hablemos de tu próxima pieza</p>
+          <h2 class="titulo-seccion titulo-iridiscente" id="contactoTitulo">Cuéntanos qué imaginas</h2>
+          <p>Una idea, un color favorito, una fecha especial o una historia que quieras llevar contigo. Estamos para ayudarte a darle forma.</p>
+          <div class="contacto-datos">
+            <div class="contacto-dato"><span class="icono-caja" aria-hidden="true">📍</span><span><strong>Ubicación</strong><br>Bogotá D.C., localidad de Tunjuelito, Colombia</span></div>
+            <div class="contacto-dato"><span class="icono-caja" aria-hidden="true">📦</span><span><strong>Operación</strong><br>Venta presencial y virtual a todo el país</span></div>
+            <div class="contacto-dato"><span class="icono-caja" aria-hidden="true">✧</span><span><strong>Personalización</strong><br>Desde cero con asesoría completa</span></div>
+          </div>
+          <h3 style="margin:0 0 12px;font-size:.86rem">Encuéntranos en redes</h3>
+          <!-- CONFIGURA los enlaces de los perfiles oficiales cuando estén creados. -->
+          <div class="redes">
+            <a class="red-social red-pendiente" href="#contacto" data-red="Instagram" aria-label="Instagram, enlace de perfil pendiente de configurar">Instagram ↗</a>
+            <a class="red-social red-pendiente" href="#contacto" data-red="TikTok" aria-label="TikTok, enlace de perfil pendiente de configurar">TikTok ↗</a>
+            <a class="red-social red-pendiente" href="#contacto" data-red="Facebook" aria-label="Facebook, enlace de perfil pendiente de configurar">Facebook ↗</a>
+          </div>
+        </div>
+
+        <form class="formulario tarjeta-opalo revelar" id="formularioContacto" novalidate>
+          <h3>Diseñemos algo especial</h3>
+          <p class="formulario-intro">Déjanos tus datos y una descripción de lo que tienes en mente.</p>
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" autocomplete="name" required minlength="2">
+          </div>
+          <div class="campo">
+            <label for="contactoUsuario">Email o teléfono</label>
+            <input type="text" id="contactoUsuario" name="contacto" placeholder="Tu correo o número de contacto" autocomplete="email" required>
+          </div>
+          <div class="campo">
+            <label for="tipoAccesorio">Tipo de accesorio</label>
+            <select id="tipoAccesorio" name="tipoAccesorio" required>
+              <option value="" selected disabled>Selecciona una categoría</option>
+              <option>Aretes</option><option>Collares y chokers</option><option>Manillas / pulseras</option>
+              <option>Accesorios para el cabello</option><option>Llaveros</option><option>Phone charms</option>
+              <option>Tobilleras</option><option>Porta gafas</option><option>Bolsos en pedrería</option>
+              <option>Colgantes</option><option>Kit combo</option><option>Otro / Tengo una idea</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="mensaje">Mensaje / idea de diseño</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre colores, materiales, ocasión, presupuesto o cualquier detalle que imagines..." required minlength="8"></textarea>
+          </div>
+          <button class="boton boton-principal" type="submit">Enviar mi idea <span aria-hidden="true">✦</span></button>
+          <div class="estado-formulario" id="estadoFormulario" role="status" aria-live="polite"></div>
+          <p class="aviso-formulario">Este formulario valida y prepara tu solicitud en esta página. Para habilitar el envío directo, configura el número de WhatsApp en el código JavaScript.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div class="footer-marca">
+          <a class="marca" href="#inicio" aria-label="Opallios, volver al inicio">
+            <!-- Logotipo oficial en versión blanca para el fondo oscuro del footer. -->
+            <img class="marca-logo" src="LogoBlanco.png" alt="Opallios">
+          </a>
+          <p class="footer-descripcion">No son solo accesorios, son historias que llevas contigo. Hecho con cariño e intención en Bogotá, Colombia.</p>
+        </div>
+        <div>
+          <h3>Explora</h3>
+          <nav class="footer-links" aria-label="Enlaces del pie de página">
+            <a href="#inicio">Inicio</a><a href="#productos">Productos</a>
+            <a href="#personalizacion">Personalización</a><a href="#nosotros">Nosotros</a>
+            <a href="#sostenibilidad">Sostenibilidad</a><a href="#contacto">Contacto</a>
+          </nav>
+        </div>
+        <div>
+          <h3>Síguenos</h3>
+          <div class="footer-redes">
+            <a href="#contacto" class="red-pendiente" data-red="Instagram">Instagram ↗</a>
+            <a href="#contacto" class="red-pendiente" data-red="TikTok">TikTok ↗</a>
+            <a href="#contacto" class="red-pendiente" data-red="Facebook">Facebook ↗</a>
+          </div>
+          <p class="footer-descripcion">Tu estilo, tu historia, tu Opallios.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="anioActual">2026</span> Opallios S.A.S. — Hecho con cariño en Bogotá, Colombia</span>
+        <span>Créditos del equipo: Caroll, Emily, Miguel Ángel y María Isabella.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante. Configura el número real en WHATSAPP_NUMBER dentro del script. -->
+  <a class="whatsapp-flotante" href="#contacto" id="whatsappFlotante" aria-label="Contactar a Opallios por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.87 11.87 0 0 0 12.07 0C5.5 0 .15 5.34.15 11.91c0 2.1.55 4.15 1.6 5.96L.05 24l6.28-1.65a11.9 11.9 0 0 0 5.73 1.46h.01c6.57 0 11.91-5.34 11.92-11.91a11.84 11.84 0 0 0-3.47-8.42ZM12.07 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.64-.23-.38a9.86 9.86 0 0 1-1.52-5.26c0-5.46 4.45-9.9 9.91-9.9a9.84 9.84 0 0 1 7.01 2.9 9.84 9.84 0 0 1 2.9 7.02c-.01 5.46-4.46 9.9-9.92 9.9Zm5.44-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.8-1.49-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.08 4.5.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+    <span class="whatsapp-texto">Hablemos por WhatsApp</span>
+  </a>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* =========================================================
+       CONFIGURACIÓN
+       =========================================================
+       Escribe el número de WhatsApp de Opallios con indicativo de país,
+       solo números y sin el signo +. Ejemplo de formato: 573001234567.
+       Déjalo vacío mientras no exista un número oficial.
+    */
+    const WHATSAPP_NUMBER = ""; // <-- CONFIGURAR: número oficial de WhatsApp de Opallios.
+
+    /* =========================================================
+       MENÚ HAMBURGUESA Y NAVEGACIÓN
+       ========================================================= */
+    const menuToggle = document.getElementById("menuToggle");
+    const navEnlaces = document.getElementById("navEnlaces");
+    const navbar = document.getElementById("navbar");
+
+    function cerrarMenu() {
+      navEnlaces.classList.remove("abierto");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menú de navegación");
+      document.body.classList.remove("menu-abierto");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const estaAbierto = navEnlaces.classList.toggle("abierto");
+      menuToggle.setAttribute("aria-expanded", String(estaAbierto));
+      menuToggle.setAttribute("aria-label", estaAbierto ? "Cerrar menú de navegación" : "Abrir menú de navegación");
+      document.body.classList.toggle("menu-abierto", estaAbierto);
+    });
+
+    navEnlaces.querySelectorAll("a").forEach((enlace) => {
+      enlace.addEventListener("click", cerrarMenu);
+    });
+
+    document.addEventListener("keydown", (evento) => {
+      if (evento.key === "Escape") cerrarMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) cerrarMenu();
+    });
+
+    /* Desplazamiento suave con cierre del menú móvil. */
+    document.querySelectorAll('a[href^="#"]').forEach((enlace) => {
+      enlace.addEventListener("click", (evento) => {
+        const destino = enlace.getAttribute("href");
+        if (!destino || destino === "#") return;
+        const seccion = document.querySelector(destino);
+        if (seccion) {
+          evento.preventDefault();
+          cerrarMenu();
+          seccion.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    /* Sombra discreta en la barra al desplazarse. */
+    function actualizarNavbar() {
+      navbar.classList.toggle("con-sombra", window.scrollY > 15);
+    }
+    window.addEventListener("scroll", actualizarNavbar, { passive: true });
+    actualizarNavbar();
+
+    /* =========================================================
+       ANIMACIONES DE APARICIÓN AL HACER SCROLL
+       ========================================================= */
+    const elementosRevelar = document.querySelectorAll(".revelar");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const observador = new IntersectionObserver((entradas, observer) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visible");
+            observer.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+      elementosRevelar.forEach((elemento) => observador.observe(elemento));
+    } else {
+      elementosRevelar.forEach((elemento) => elemento.classList.add("visible"));
+    }
+
+    /* =========================================================
+       FORMULARIO: VALIDACIÓN Y PREPARACIÓN DEL PEDIDO
+       ========================================================= */
+    const formulario = document.getElementById("formularioContacto");
+    const estadoFormulario = document.getElementById("estadoFormulario");
+    const campoContacto = document.getElementById("contactoUsuario");
+
+    function mostrarEstado(mensaje) {
+      estadoFormulario.textContent = mensaje;
+      estadoFormulario.classList.add("visible");
+    }
+
+    function esEmailOtelefono(valor) {
+      const texto = valor.trim();
+      const pareceEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(texto);
+      const digitos = texto.replace(/\D/g, "");
+      const pareceTelefono = digitos.length >= 7 && digitos.length <= 15;
+      return pareceEmail || pareceTelefono;
+    }
+
+    campoContacto.addEventListener("input", () => {
+      campoContacto.setCustomValidity("");
+      estadoFormulario.classList.remove("visible");
+    });
+
+    formulario.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+      estadoFormulario.classList.remove("visible");
+
+      if (!formulario.checkValidity()) {
+        formulario.reportValidity();
+        return;
+      }
+
+      if (!esEmailOtelefono(campoContacto.value)) {
+        campoContacto.setCustomValidity("Escribe un correo electrónico válido o un número de teléfono.");
+        campoContacto.reportValidity();
+        campoContacto.focus();
+        return;
+      }
+
+      campoContacto.setCustomValidity("");
+      const datos = new FormData(formulario);
+      const nombre = String(datos.get("nombre")).trim();
+      const contacto = String(datos.get("contacto")).trim();
+      const accesorio = String(datos.get("tipoAccesorio")).trim();
+      const mensaje = String(datos.get("mensaje")).trim();
+      const textoPedido = `Hola, Opallios. Soy ${nombre}.\nMi contacto: ${contacto}.\nMe interesa: ${accesorio}.\nMi idea: ${mensaje}`;
+
+      if (/^\d{10,15}$/.test(WHATSAPP_NUMBER)) {
+        const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(textoPedido)}`;
+        window.open(urlWhatsApp, "_blank", "noopener,noreferrer");
+        mostrarEstado("Tu solicitud está lista. Se abrió WhatsApp para que puedas enviarla.");
+      } else {
+        mostrarEstado("¡Gracias! Tus datos se validaron correctamente. Para recibir pedidos directamente, el equipo debe configurar el número oficial de WhatsApp en el código de esta página.");
+      }
+    });
+
+    /* =========================================================
+       BOTÓN FLOTANTE DE WHATSAPP
+       ========================================================= */
+    const whatsappFlotante = document.getElementById("whatsappFlotante");
+    whatsappFlotante.addEventListener("click", (evento) => {
+      if (/^\d{10,15}$/.test(WHATSAPP_NUMBER)) {
+        evento.preventDefault();
+        const saludo = "Hola, Opallios. Quiero información sobre sus accesorios personalizados.";
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(saludo)}`, "_blank", "noopener,noreferrer");
+      }
+      /* Si el número aún no está configurado, el enlace lleva al formulario de contacto. */
+    });
+
+    /* =========================================================
+       REDES SOCIALES: ENLACES PENDIENTES DE CONFIGURAR
+       ========================================================= */
+    document.querySelectorAll(".red-pendiente").forEach((enlace) => {
+      enlace.addEventListener("click", (evento) => {
+        evento.preventDefault();
+        const red = enlace.dataset.red || "esta red social";
+        mostrarToast(`El perfil de ${red} se agregará cuando Opallios publique sus enlaces oficiales.`);
+      });
+    });
+
+    /* Mensaje breve reutilizable para avisos de interfaz. */
+    const toast = document.getElementById("toast");
+    let toastTemporizador;
+    function mostrarToast(mensaje) {
+      toast.textContent = mensaje;
+      toast.classList.add("visible");
+      window.clearTimeout(toastTemporizador);
+      toastTemporizador = window.setTimeout(() => toast.classList.remove("visible"), 3800);
+    }
+
+    /* Año dinámico en el footer. */
+    document.getElementById("anioActual").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
